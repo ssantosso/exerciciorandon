@@ -2,12 +2,18 @@
 
 public static class Valores
 {
+    public static Random _rand = new Random();
     public static void CustomGenareted(int[] lenghts, int length, int min = 1, int max = 51)
     {
         var soma = lenghts.Sum(x => x);
         if (soma > length || soma == 0)
         {
             Console.WriteLine("Tamando da soma dos numeros absolutos não pode superar o tamanho total de item esperado");
+            return;
+        }
+        if (length > 50)
+        {
+            Console.WriteLine("Tamanho nao suportado!");
             return;
         }
         var list = new int[length];
@@ -29,12 +35,12 @@ public static class Valores
 
         for (int i = count; i < length; i++)
         {
-            list[count] = GerarNumeroValido(new Random().Next(min, max), list, min, max);
+            list[count] = GerarNumeroValido(_rand.Next(min, max), list, min, max);
             count++;
         }
 
-        Console.WriteLine($"[ {string.Join(",", list)} ]");
+        Console.WriteLine($"[ {string.Join(" ,", list)}]");
     }
     public static int GerarNumeroValido(int valor, int[] listExists, int min = 1, int max = 51)
-            => listExists.Any(x => x == valor || valor == 0) ? GerarNumeroValido(new Random().Next(min, max), listExists, min, max) : valor;
+            => listExists.Any(x => x == valor || valor == 0) ? GerarNumeroValido(_rand.Next(min, max), listExists, min, max) : valor;
 }
