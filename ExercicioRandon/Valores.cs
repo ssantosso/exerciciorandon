@@ -11,7 +11,7 @@ public static class Valores
             Console.WriteLine("Tamando da soma dos numeros absolutos não pode superar o tamanho total de item esperado");
             return;
         }
-        if (length > 50)
+        if (length > max-1)
         {
             Console.WriteLine("Tamanho nao suportado!");
             return;
